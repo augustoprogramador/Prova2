@@ -48,7 +48,7 @@ public class DetalhesPedidoActivity extends AppCompatActivity {
 //            Log.i("logi", "endereço de entrega: "+ enderecoEntrega);
         }
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         bdPedidos = BDPedido.getInstance(this);
 

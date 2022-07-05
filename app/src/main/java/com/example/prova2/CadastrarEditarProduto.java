@@ -74,7 +74,7 @@ public class CadastrarEditarProduto extends AppCompatActivity implements View.On
             setFields(produto);
         }
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
     @Override

@@ -55,7 +55,7 @@ public class CarrinhoActivity extends AppCompatActivity implements View.OnClickL
             idUsuario = extras.getString("ID_USUARIO");
         }
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         bdCarrinho = BDCarrinho.getInstance(this);
         bdProduto = BDProduto.getInstance(this);

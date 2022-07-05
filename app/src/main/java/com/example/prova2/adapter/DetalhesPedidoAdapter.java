@@ -65,10 +65,6 @@ public class DetalhesPedidoAdapter extends RecyclerView.Adapter<DetalhesPedidoAd
 
         holder.getPrecoTotalProduto().setText(Totaltruncado);
 
-      // holder.getFormaPagamentoCampo().setText("a");
-        holder.getPagamento().setText("testee");
-
-
     }
 
 

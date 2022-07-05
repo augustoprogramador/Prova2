@@ -62,7 +62,7 @@ public class DetalhesProduto extends AppCompatActivity implements View.OnClickLi
 
         btn_adicionar_carrinho = findViewById(R.id.btn_adicionar_carrinho);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         if(idProduto != null){
             produto = bdProduto.findByID(idProduto);
