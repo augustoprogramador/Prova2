@@ -71,7 +71,7 @@ public class DetalhesPedidoActivity extends AppCompatActivity {
         rvlista = (RecyclerView) findViewById(R.id.rvListaCarrinho);
         rvlista.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
-        DetalhesPedidoAdapter detalhesPedidoAdapter = new DetalhesPedidoAdapter(this, listaProdutos, qtdProdutos);
+        DetalhesPedidoAdapter detalhesPedidoAdapter = new DetalhesPedidoAdapter(this, listaProdutos, qtdProdutos, pedidoDetalhe);
         rvlista.setAdapter(detalhesPedidoAdapter);
     }
 }

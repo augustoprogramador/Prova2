@@ -34,14 +34,17 @@ public class BDUsuario extends SQLiteOpenHelper {
 
             db_write.execSQL("CREATE TABLE if NOT EXISTS tb_usuario (_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     "nome TEXT, " +
-                    "email TEXT, " +
-                    "usuario TEXT, " +
+                    "email TEXT UNIQUE, " +
+                    "usuario TEXT UNIQUE, " +
                     "senha TEXT);");
         }
         return instance;
     }
 
     public Usuario insereUsuario(Usuario usuario) throws SQLiteException {
+
+        if (findByID(usuario.getId()) != null) return null;
+
         ContentValues new_values = new ContentValues();
 
         new_values.put("nome", usuario.getNome());

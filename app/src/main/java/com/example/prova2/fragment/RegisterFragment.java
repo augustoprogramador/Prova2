@@ -76,7 +76,10 @@ public class RegisterFragment extends Fragment{
                             txt_login_senha.getText().toString()
                     );
 
-                    db.insereUsuario(newUsuario);
+                    if (db.insereUsuario(newUsuario) == null) {
+                        Toast.makeText(getContext(), "Usuário já cadastrado", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
 
                     Navigation.findNavController(view1).navigate(R.id.register_to_login);
                 }else{
