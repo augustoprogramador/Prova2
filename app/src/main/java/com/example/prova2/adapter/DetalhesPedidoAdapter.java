@@ -62,7 +62,7 @@ public class DetalhesPedidoAdapter extends RecyclerView.Adapter<DetalhesPedidoAd
         String Totaltruncado = new DecimalFormat("#,##0.00").format(precoTotal);
         Log.i("debug", "preço total produto: " + new DecimalFormat("#,##0.00").format(precoTotal));
 
-
+        holder.getPagamento().setText("TEstando");
         holder.getPrecoTotalProduto().setText(Totaltruncado);
 
     }
@@ -90,7 +90,7 @@ public class DetalhesPedidoAdapter extends RecyclerView.Adapter<DetalhesPedidoAd
             this.precoUnitario = (TextView) itemView.findViewById(R.id.txt_preco_unitario);
             this.quantidadeCarrinho = (TextView) itemView.findViewById(R.id.txt_quantidade_carrinho);
             this.precoTotalProduto = (TextView) itemView.findViewById(R.id.txt_preco_total_produto);
-            this.pagamento = (TextView) itemView.findViewById(R.id.txtteste);
+            this.pagamento = (TextView) itemView.findViewById(R.id.txt_forma_pagamento);
         }
 
         public TextView getPagamento() {
