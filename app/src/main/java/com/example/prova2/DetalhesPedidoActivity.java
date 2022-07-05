@@ -2,6 +2,8 @@ package com.example.prova2;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -31,6 +33,7 @@ public class DetalhesPedidoActivity extends AppCompatActivity {
     String[] nomesProdutos;
     ArrayList<String> qtdProdutos = new ArrayList<>();
     ArrayList<Produto> listaProdutos = new ArrayList<>();
+    TextView precoTotal, endereco, formaPagamento;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +47,6 @@ public class DetalhesPedidoActivity extends AppCompatActivity {
             enderecoEntrega = null;
         } else {
             idPedido = extras.getString("ID_PEDIDO");
-//            enderecoEntrega = extras.getString("ENDERECO_ENTREGA");
-//            Log.i("logi", "endereço de entrega: "+ enderecoEntrega);
         }
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
@@ -73,5 +74,14 @@ public class DetalhesPedidoActivity extends AppCompatActivity {
 
         DetalhesPedidoAdapter detalhesPedidoAdapter = new DetalhesPedidoAdapter(this, listaProdutos, qtdProdutos, pedidoDetalhe);
         rvlista.setAdapter(detalhesPedidoAdapter);
+
+        precoTotal = findViewById(R.id.txt_carrinho_valor_total);
+        endereco = findViewById(R.id.txt_endereco_entrega);
+        formaPagamento = findViewById(R.id.txt_forma_pagamento);
+
+        precoTotal.setText(pedidoDetalhe.getValorFinal());
+        endereco.setText(pedidoDetalhe.getEnderecoEntrega());
+        formaPagamento.setText(pedidoDetalhe.getFormaPagamento());
+
     }
 }
