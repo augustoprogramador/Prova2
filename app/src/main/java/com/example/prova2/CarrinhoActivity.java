@@ -178,7 +178,7 @@ public class CarrinhoActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View view) {
         if(view.getId() == R.id.btn_fechar_pedido){
-            if(txt_endereco_entrega.getText().equals("") ||formaPagamento.equals("") || carrinhos.size() == 0){
+            if(txt_endereco_entrega.getText().toString().isEmpty() ||formaPagamento.equals("") || carrinhos.size() == 0){
                 Toast.makeText(this, "Preencha todos os campos e tenha itens adicionados", Toast.LENGTH_SHORT).show();
                 return;
             }else {
