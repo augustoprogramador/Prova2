@@ -112,6 +112,7 @@ public class EdicaoFragment extends Fragment implements View.OnClickListener {
                         }
 
                         bdUsuario.atualizaUsuario(u);
+                        Toast.makeText(getContext(), "Usuário atualizado!", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(getContext(), "Erro ao atualizar. " +
