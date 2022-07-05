@@ -1,9 +1,11 @@
 package com.example.prova2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,21 +15,21 @@ import com.example.prova2.adapter.DetalhesPedidoAdapter;
 import com.example.prova2.bd.BDCarrinho;
 import com.example.prova2.bd.BDPedido;
 import com.example.prova2.bd.BDProduto;
+import com.example.prova2.bd.BDUsuario;
+import com.example.prova2.interfaces.botaoVoltar;
 import com.example.prova2.model.Carrinho;
 import com.example.prova2.model.Pedido;
 import com.example.prova2.model.Produto;
+import com.example.prova2.model.Usuario;
 
 import java.util.ArrayList;
 
-public class DetalhesPedidoActivity extends AppCompatActivity {
-    BDCarrinho bdCarrinho;
+public class DetalhesPedidoActivity extends AppCompatActivity implements botaoVoltar {
     BDPedido bdPedidos;
     BDProduto bdProduto;
     RecyclerView rvlista;
     String idPedido;
     String enderecoEntrega;
-    ArrayList<Carrinho> carrinhos = new ArrayList<>();
-    ArrayList<Pedido> pedido = new ArrayList<>();
     Pedido pedidoDetalhe;
     String[] idsProdutos;
     String[] nomesProdutos;
@@ -84,4 +86,15 @@ public class DetalhesPedidoActivity extends AppCompatActivity {
         formaPagamento.setText(pedidoDetalhe.getFormaPagamento());
 
     }
+
+    @Override
+    public void onBackPressed() {
+
+        Usuario u = BDUsuario.getInstance(this).findByID(pedidoDetalhe.getIdUsuario());
+//        Toast.makeText(this, u.getNome(), Toast.LENGTH_SHORT).show();
+        Intent it = new Intent(this, Home.class);
+        it.putExtra("ID_USUARIO", u.getId());
+        startActivity(it);
+    }
+
 }
