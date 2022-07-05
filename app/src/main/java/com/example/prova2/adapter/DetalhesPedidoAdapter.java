@@ -17,6 +17,9 @@ import com.example.prova2.model.Carrinho;
 import com.example.prova2.model.Pedido;
 import com.example.prova2.model.Produto;
 
+import org.w3c.dom.Text;
+
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class DetalhesPedidoAdapter extends RecyclerView.Adapter<DetalhesPedidoAdapter.ViewHolder> {
@@ -24,13 +27,15 @@ public class DetalhesPedidoAdapter extends RecyclerView.Adapter<DetalhesPedidoAd
     private final Context context;
     private final BDProduto bdProduto;
     private final ArrayList<String> qtdProdutos;
+    private final Pedido pedido;
 
-    public DetalhesPedidoAdapter(Context context, ArrayList<Produto> lista, ArrayList<String> qtdProdutos) {
+    public DetalhesPedidoAdapter(Context context, ArrayList<Produto> lista, ArrayList<String> qtdProdutos, Pedido pedido) {
         Log.i("debug", "aqui entrou no adapter");
         this.lista = lista;
         this.context = context;
         this.bdProduto = BDProduto.getInstance(context);
         this.qtdProdutos = qtdProdutos;
+        this.pedido = pedido;
     }
 
     @NonNull
@@ -47,13 +52,21 @@ public class DetalhesPedidoAdapter extends RecyclerView.Adapter<DetalhesPedidoAd
         holder.getNomeCarrinho().setText(lista.get(position).getNome());
         Log.i("debug", "nome do produto: " + lista.get(position).getNome());
         holder.getPrecoUnitario().setText("R$ " + lista.get(position).getPreco().toString());
-        Log.i("debug", "preço do produto: " + lista.get(position).getPreco().toString());
+        Double preco = Double.parseDouble(lista.get(position).getPreco().toString());
+        Log.i("debug", "preço do produto: " + preco);
 
         holder.getQuantidadeCarrinho().setText("x" + qtdProdutos.get(position));
-        Log.i("debug", "quantidade do produto: " + qtdProdutos.get(position));
+        Integer qtd = Integer.parseInt( qtdProdutos.get(position));
+        Log.i("debug", "quantidade do produto: " + qtd);
+        Double precoTotal = preco * qtd;
+        String Totaltruncado = new DecimalFormat("#,##0.00").format(precoTotal);
+        Log.i("debug", "preço total produto: " + new DecimalFormat("#,##0.00").format(precoTotal));
 
 
-        // Falta fazer preço total de cada produto
+        holder.getPrecoTotalProduto().setText(Totaltruncado);
+
+      // holder.getFormaPagamentoCampo().setText("a");
+        holder.getPagamento().setText("testee");
 
 
     }
@@ -69,7 +82,8 @@ public class DetalhesPedidoAdapter extends RecyclerView.Adapter<DetalhesPedidoAd
         private final TextView nomeCarrinho;
         private final TextView precoUnitario;
         private final TextView quantidadeCarrinho;
-        // private final TextView precoTotalProduto;
+        private final TextView precoTotalProduto;
+        private final TextView pagamento;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -79,7 +93,12 @@ public class DetalhesPedidoAdapter extends RecyclerView.Adapter<DetalhesPedidoAd
             this.nomeCarrinho = (TextView) itemView.findViewById(R.id.txt_nome_carrinho);
             this.precoUnitario = (TextView) itemView.findViewById(R.id.txt_preco_unitario);
             this.quantidadeCarrinho = (TextView) itemView.findViewById(R.id.txt_quantidade_carrinho);
-            //  this.precoTotalProduto = (TextView) itemView.findViewById(R.id.txt_preco_total_produto);
+            this.precoTotalProduto = (TextView) itemView.findViewById(R.id.txt_preco_total_produto);
+            this.pagamento = (TextView) itemView.findViewById(R.id.txtteste);
+        }
+
+        public TextView getPagamento() {
+            return pagamento;
         }
 
         public ImageView getImg() {
@@ -98,8 +117,8 @@ public class DetalhesPedidoAdapter extends RecyclerView.Adapter<DetalhesPedidoAd
             return quantidadeCarrinho;
         }
 
-//        public TextView getPrecoTotalProduto() {
-//            return precoTotalProduto;
-//        }
+        public TextView getPrecoTotalProduto() {
+            return precoTotalProduto;
+        }
     }
 }
