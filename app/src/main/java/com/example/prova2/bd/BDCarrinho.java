@@ -12,7 +12,7 @@ import com.example.prova2.model.Produto;
 import java.util.ArrayList;
 
 public class BDCarrinho extends SQLiteOpenHelper {
-    public final static String NOME_BANCO = "prova2";
+    public final static String NOME_BANCO = "aug_bre_gui_jen";
     public final static int VERSAO_BANCO = 13;
 
     private static BDCarrinho instance;

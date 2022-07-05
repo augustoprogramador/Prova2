@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class BDUsuario extends SQLiteOpenHelper {
 
-    public final static String NOME_BANCO = "prova2";
+    public final static String NOME_BANCO = "aug_bre_gui_jen";
     public final static int VERSAO_BANCO = 13;
 
     private static BDUsuario instance;

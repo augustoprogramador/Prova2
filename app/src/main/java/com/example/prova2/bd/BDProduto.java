@@ -22,7 +22,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class BDProduto extends SQLiteOpenHelper {
-    public final static String NOME_BANCO = "prova2";
+    public final static String NOME_BANCO = "aug_bre_gui_jen";
     public final static int VERSAO_BANCO = 13;
 
     private static BDProduto instance;
